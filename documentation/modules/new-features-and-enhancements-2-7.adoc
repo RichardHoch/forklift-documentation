@@ -13,3 +13,6 @@ Possible options are:
 * SCSI
 * SATA
 * VirtIO
+
+// https://issues.redhat.com/browse/MTV-2029
+* In {project-short} 2.7.11, you can now migrate shared disks from VMware vSphere by making use of the new `Plan` CR label `migrateSharedDisks`. When set to `true,` {project-short} migrates all shared disks in the CR. When set to `false`, {project-short} does not migrate them. The option applies only to cold migrations. Warm migration of shared disks is not supported. 
