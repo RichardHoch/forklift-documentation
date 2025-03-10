@@ -17,10 +17,10 @@ Possible options are:
 // https://issues.redhat.com/browse/MTV-2029
 * In {project-short} 2.7.11, you can now migrate shared disks from VMware vSphere by using the new label `migrateSharedDisks` in `Plan` CRs.
 +
-The label has the following effects, dependinng on its setting:
+The label can be set to `true` or `false`:
 
 ** When set to `true,` {project-short} migrates all shared disks in the CR. 
-** When set to `false`, {project-short} does not migrate them. 
+** When set to `false`, {project-short} does not migrate the shared disks. 
 
 [NOTE]
 ====
