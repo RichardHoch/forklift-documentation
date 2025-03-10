@@ -38,4 +38,4 @@ In Red Hat Enterprise Linux (RHEL) 9, there has been a significant change in how
 
 .Migration fails for VMs backed by vSAN without VDDK
 
-Virtual machine (VM) migrations do not work without VDDK for VMs that are backed by VMware vSAN. link:https://issues.redhat.com/browse/MTV-2203[(MTV-2203)]
+Migrations for virtual machines (VMs) that are backed by VMware vSAN must use a Virtual Disk Development Kit (VDDK) image. Without a VDDK image, these migrations fail. link:https://issues.redhat.com/browse/MTV-2203[(MTV-2203)]
