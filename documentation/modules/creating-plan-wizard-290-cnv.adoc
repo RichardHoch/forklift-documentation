@@ -149,3 +149,13 @@ The wizard opens to the page on which you defined the item.
 When your plan is validated, the *Plan details* page for your plan opens.
 + 
 Your plan appears in the table on the *Plans* page, and you can run it from that page.
+
+The *Plan details* page includes six tabs, which are described on the table that follows:
+
+[cols="1,1,1,1,1", options="header"]
+.Tabs of the Plan details page
+|===
+|Details |YAML|Virtual Machines |Resources |Mappings|Hooks
+|Described in the procedure |Lets you add YAML or JSON plan definitions or upload a file containing one them |The virtual machines the plan migrates |?? |??
+|===
+
