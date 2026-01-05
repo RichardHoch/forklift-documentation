@@ -157,7 +157,7 @@ where:
 Is an optional section.
 
 `<user>`::
-Specifies the {rhv-short} {manager} user.
+Specifies the {rhv-full} {manager} user.
 
 `<password>`::
 Specifies the user password.
@@ -538,7 +538,7 @@ You can use either the `id` or the `name` parameter to specify the source networ
 Specifies a network attachment definition for each additional {virt} network.
 
 `<network_attachment_definition_namespace>`::
-Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+Required only when `type` is `multus`. Specifies the namespace of the {virt} network attachment definition.
 
 `namespace`::
 If you are using a user-defined network (UDN), its namespace is defined in {virt}.
@@ -587,13 +587,13 @@ where:
 Allowed values are `pod` and `multus`.
 
 `source`::
-You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {rhv-short} network Universal Unique ID (UUID).
+You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {rhv-full} network Universal Unique ID (UUID).
 
 `<network_attachment_definition>`::
 Specifies a network attachment definition for each additional {virt} network.
 
 `<network_attachment_definition_namespace>`::
-Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+Required only when `type` is `multus`. Specifies the namespace of the {virt} network attachment definition.
 
 `namespace`::
 If you are using a user-defined network (UDN), its namespace is defined in {virt}.
@@ -646,7 +646,7 @@ Specifies the OVA network Universal Unique ID (UUID).
 Specifies a network attachment definition for each additional {virt} network.
 
 `<network_attachment_definition_namespace>`::
-Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+Required only when `type` is `multus`. Specifies the namespace of the {virt} network attachment definition.
 
 `namespace`::
 If you are using a user-defined network (UDN), its namespace is defined in {virt}.
@@ -701,7 +701,7 @@ You can use either the `id` or the `name` parameter to specify the source networ
 Specifies a network attachment definition for each additional {virt} network.
 
 `<network_attachment_definition_namespace>`::
-Required only when `type` is `multus`. Specify the namespace of the {virt} network attachment definition.
+Required only when `type` is `multus`. Specifies the namespace of the {virt} network attachment definition.
 
 `namespace`::
 If you are using a user-defined network (UDN), its namespace is defined in {virt}.
@@ -754,7 +754,7 @@ Allowed values are `pod`, `ignored`, and `multus`.
 Specifies the network name. When the `type` is `multus`, use the {virt} network attachment definition name.
 
 `<network_attachment_definition_namespace>`::
-Required only when the `type` is `multus`. Specify the namespace of the {virt} network attachment definition. 
+Required only when the `type` is `multus`. Specifies the namespace of the {virt} network attachment definition. 
 endif::[]
 
 ifdef::vmware[]
@@ -830,7 +830,7 @@ where:
 Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 
 `<source_storage_domain>`::
-Specifies the {rhv-short} storage domain UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
+Specifies the {rhv-full} storage domain UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
 endif::[]
 
 ifdef::ova[]
@@ -1059,7 +1059,7 @@ Specifies the name of the `Plan` CR.
 Specifies whether the migration is warm - `true` - or cold - `false`. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run.
 
 `map`::
-Specify only one network map and one storage map per plan.
+Specifies the network map and the storage map used by the plan.
 
 `network`::
 Specifies a network mapping even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
@@ -1125,7 +1125,7 @@ Determines whether VMs are converted before migration using the `virt-v2v` tool,
 Raw copy mode copies VMs without converting them with `virt-v2v`. This allows for faster conversions, migrating VMs running a wider range of operating systems, as well as supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}. For more information on `virt-v2v`, see xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool].
 
 `targetAffinity`::
-Optional: Affinity rule, which may be quite complex, is entered in lines following this label.
+Optional: Specifies a target affinity rule, which may be quite complex, is entered in lines following this label.
 +
 `targetAffinity`, `targetLabels`, and `targetNodeSelector` are labels that support VM target scheduling, a feature that lets you direct {project-short} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when the VMs are powered on. For more information on the feature in general, see xref:target-vm-scheduling-options_mtv[Target VM scheduling options]. For more details on using the feature with the CLI, including an example YAML snippet, see xref:configuring-target-vm-scheduling-cli_mtv[Scheduling target VMs from the command-line interface].
 
@@ -1141,7 +1141,7 @@ Determines whether the migration uses VirtIO devices or compatibility devices (S
 * When set to `false`, {project-short} uses high-performance VirtIO devices in the migration process, and `virt-v2v` ensures that the VMs can be booted after migration. Before using this option, verify that VirtIO drivers are already installed in the source VMs.
 
 `volumeNameTemplate`::
-Optional: Specify a template for the volume interface name for the VMs in your plan.
+Optional: Specifies a template for the volume interface name for the VMs in your plan.
 The template follows the Go template syntax and has access to the following variables:
 ** `.PVCName`: Name of the PVC mounted to the VM using this volume.
 ** `.VolumeIndex`: Sequential index of the volume interface (0-based).
@@ -1157,7 +1157,7 @@ Use either the `id` or the `name` parameter to specify the source VMs. If you ar
 Specifies the {vmw} vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
 
 `networkNameTemplate`::
-Optional: Specifies a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in spec:networkNameTemplate`.
+Optional: Specifies a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in `spec:networkNameTemplate`.
 
 `pvcNameTemplate`::
 Optional: Specifies a PVC name for the specific VM. Overrides the value set in `spec:pvcNameTemplate`. Variables and examples as in `spec:pvcNameTemplate`.
@@ -1252,7 +1252,7 @@ See note below.
 Specifies whether the migration is warm or cold. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run.
 
 `map`::
-Specify only one network map and one storage map per plan.
+Specifies the network map and the storage map used by the plan.
 
 `network`::
 Specifies a network mapping even if the VMs to be migrated are not assigned to a network. The mapping can be empty in this case.
@@ -1270,7 +1270,7 @@ Specifies the name of the `StorageMap` CR.
 Use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
 
 `<source_vm1>`::
-Specifies the {rhv-short} VM UUID.
+Specifies the {rhv-full} VM UUID.
 
 `hooks`::
 Optional: Specifies up to two hooks for a VM. Each hook must run during a separate migration step.
@@ -1287,7 +1287,7 @@ Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, a
 
 * If the migrated machine is _not_ set with a custom CPU model:
 
-** If `preserveClusterCpuModel` is set to 'true`, {project-short} checks the CPU model of the VM when it runs in {rhv-short}, based on the cluster's configuration, and then sets the migrated VM with that CPU model.
+** If `preserveClusterCpuModel` is set to 'true`, {project-short} checks the CPU model of the VM when it runs in {rhv-full}, based on the cluster's configuration, and then sets the migrated VM with that CPU model.
 ** If `preserveClusterCpuModel` is set to 'false`, {project-short} does not set a CPU type and the VM is set with the default CPU model of the destination cluster.
 ====
 endif::[]
