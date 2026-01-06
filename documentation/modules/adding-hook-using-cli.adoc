@@ -69,19 +69,19 @@ metadata:
   namespace: <namespace>
 spec:
   image: quay.io/kubev2v/hook-runner
-  serviceAccount:<service account> 
+  serviceAccount:<service_account> 
   playbook: |
-    <Base64-encoded_Ansible_Playbook>
+    <playbook>
 EOF
 ----
 +
 where:
 
-<service account>::
-(Optional) {ocp} service account. The `serviceAccount` must be provided if you want to manipulate any resources of the cluster.
+<service_account>::
+Specifies the {ocp} service account. This is an optional label. The `serviceAccount` must be provided if you want to manipulate any resources of the cluster.
 
-Base64-encoded Ansible Playbook::
-For example, `LS0tCi0gbm...`. If you specify a playbook, the `image` must include an `ansible-runner`.
+<playbook>::
+Specifies the Base64-encoded Ansible Playbook to use. For example, `LS0tCi0gbm...`. If you specify a playbook, the `image` must include an `ansible-runner`.
 +
 [NOTE]
 ====
@@ -114,7 +114,7 @@ $ oc get -n konveyor-forklift hook playbook -o \
 where:
 
 <type_of_hook>::
-Options are `PreHook`, to run the hook before the migration, and `PostHook`, to run the hook after the migration.
+Specifies the type of hook. Options are `PreHook`, to run the hook before the migration, and `PostHook`, to run the hook after the migration.
 
 [IMPORTANT]
 ====

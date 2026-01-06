@@ -20,7 +20,7 @@ $ {oc} patch forkliftcontroller/<forklift-controller> -n {namespace} -p '{"spec"
 +
 where:
 
-`"controller_precopy_interval":<interval_in_minutes>`::
+<interval_in_minutes>`::
 Specifies the precopy interval in minutes. The default value is `60`.
 +
 You do not need to restart the `forklift-controller` pod.

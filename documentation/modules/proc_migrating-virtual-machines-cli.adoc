@@ -105,7 +105,7 @@ EOF
 where:
 
 `ownerReferences`::
-Is an optional section.
+Is an optional section in which you can specify a provider's `name` and `uid`.
 
 `<user>`::
 Specifies the vCenter user or the ESX/ESXi user.
@@ -117,7 +117,7 @@ Specifies the password of the vCenter user or the ESX/ESXi user.
 Specifies `"true"` to skip certificate verification, and specifies `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
 
 `cacert`::
-When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
+Specifies the CA cert object. When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
 
 `<api_end_point>`::
 Specifies the API endpoint URL of the vCenter or the ESX/ESXi, for example, `https://<vCenter_host>/sdk`.
@@ -154,19 +154,19 @@ EOF
 where:
 
 `ownerReferences`::
-Is an optional section.
+Is an optional section in which you can specify a provider's `name` and `uid`
 
 `<user>`::
 Specifies the {rhv-full} {manager} user.
 
 `<password>`::
-Specifies the user password.
+Specifies the user's password.
 
 `<"true"/"false">`::
 Specifies `"true"` to skip certificate verification, and specifies `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
 
 `cacert`::
-Enter the {manager} CA certificate, unless it was replaced by a third-party certificate, in which case, enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA.
+Specifies the CA cert object. Enter the {manager} CA certificate, unless it was replaced by a third-party certificate, in which case, enter the {manager} Apache CA certificate. You can retrieve the {manager} CA certificate at https://<engine_host>/ovirt-engine/services/pki-resource?resource=ca-certificate&format=X509-PEM-CA.
 
 `<api_end_point>`::
 Specifies the API endpoint URL, for example, `https://<engine_host>/ovirt-engine/api`.
@@ -198,10 +198,10 @@ EOF
 where:
 
 `ownerReferences`::
-Is an optional section.
+Is an optional section in which you can specify a provider's `name` and `uid`.
 
 `<nfs_server:/nfs_path>`::
-Where `nfs_server` is an IP or hostname of the server where the share was created and `nfs_path` is the path on the server where the OVA files are stored.
+Specifies the `nfs_server`, which is an IP or hostname of the server where the share was created and `nfs_path`, which is the path on the server where the OVA files are stored.
 endif::[]
 ifdef::ostack[]
 +
@@ -238,7 +238,7 @@ EOF
 where:
 
 `ownerReferences`::
-Is an optional section.
+Is an optional section in which you can specify a provider's `name` and `uid`.
 
 `<user>`::
 Specifies the {osp} user.
@@ -250,7 +250,7 @@ Specifies the user {osp} password.
 Specifies `"true"` to skip certificate verification, and specifies `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
 
 `cacert`::
-When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
+Specifies the CA cert object. When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
 
 `<api_end_point>`::
 Specifies the API endpoint URL, for example, `https://<identity_service>/v3`.
@@ -288,7 +288,7 @@ EOF
 where:
 
 `ownerReferences`::
-Is an optional section.
+Is an optional section in which you can specify a provider's `name` and `uid`.
 
 `<token>`::
 Specifies a token for a service account with `cluster-admin` privileges. If both `token` and `url` are left blank, the local {ocp-short} cluster is used.
@@ -300,7 +300,7 @@ Specifies the user password.
 Specifies `"true"` to skip certificate verification, and specifies `"false"` to verify the certificate. Defaults to `"false"` if not specified. Skipping certificate verification proceeds with an insecure migration and then the certificate is not required. Insecure migration means that the transferred data is sent over an insecure connection and potentially sensitive data could be exposed.
 
 `cacert`::
-When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
+Specifies the CA cert object. When this field is not set and 'skip certificate verification' is disabled, {project-short} attempts to use the system CA.
 
 `<api_end_point>`::
 Specifies the URL of the endpoint of the API server.
@@ -337,10 +337,10 @@ where:
 Specifies the URL of the API endpoint, for example, `https://<vCenter_host>/sdk`.
 
 `<VDDK_image>`::
-Optional, but it is strongly recommended to create a VDDK image to accelerate migrations. Follow OpenShift documentation to specify the VDDK image you created.
+Specifies the VDDK image. This is an optional label, but it is strongly recommended to create a VDDK image to accelerate migrations. Follow OpenShift documentation to specify the VDDK image you created.
 
 `sdkEndpoint`::
-Options: `vcenter` or `esxi`.
+Specifies the URL used by the provider's SDK. Options: `vcenter` or `esxi`.
 
 `<secret>`::
 Specifies the name of the provider `Secret` CR.
@@ -396,7 +396,7 @@ EOF
 where:
 
 `<nfs_server:/nfs_path>`::
-Where `nfs_server` is an IP or hostname of the server where the share was created and `nfs_path` is the path on the server where the OVA files are stored.
+Specifies the `nfs_server`, which is an IP or hostname of the server where the share was created and `nfs_path`, which is the path on the server where the OVA files are stored.
 
 `<secret>`::
 Specifies the name of the provider `Secret` CR.
@@ -529,19 +529,19 @@ EOF
 where:
 
 `type`::
-Allowed values are `pod`, `multus`, and `ignored`. Use `ignored` to avoid attaching VMs to this network for this migration.
+Specifies the network type. Allowed values are `pod`, `multus`, and `ignored`. Use `ignored` to avoid attaching VMs to this network for this migration.
 
 `source`::
-You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {vmw} vSphere network Managed Object Reference (moRef). To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
+Specifies the source network. You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {vmw} vSphere network Managed Object Reference (moRef). To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
 
 `<network_attachment_definition>`::
-Specifies a network attachment definition for each additional {virt} network.
+Specifies a network attachment definition (NAD) for each additional {virt} network.
 
 `<network_attachment_definition_namespace>`::
-Required only when `type` is `multus`. Specifies the namespace of the {virt} network attachment definition.
+Specifies the namespace of the {virt} NAD. Required only when `type` is `multus`. 
 
 `namespace`::
-If you are using a user-defined network (UDN), its namespace is defined in {virt}.
+Specifies the namespace. If you are using a user-defined network (UDN), its namespace is defined in {virt}.
 endif::[]
 
 ifdef::rhv[]
@@ -584,19 +584,19 @@ EOF
 where:
 
 `type`::
-Allowed values are `pod` and `multus`.
+Specifies the network type. Allowed values are `pod` and `multus`.
 
 `source`::
-You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {rhv-full} network Universal Unique ID (UUID).
+Specifies the source network. You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {rhv-full} network Universal Unique ID (UUID).
 
 `<network_attachment_definition>`::
-Specifies a network attachment definition for each additional {virt} network.
+Specifies a network attachment definition (NAD) for each additional {virt} network.
 
 `<network_attachment_definition_namespace>`::
-Required only when `type` is `multus`. Specifies the namespace of the {virt} network attachment definition.
+Specifies the namespace of the {virt} NAD. Required only when `type` is `multus`. 
 
 `namespace`::
-If you are using a user-defined network (UDN), its namespace is defined in {virt}.
+Specifies the namespace. If you are using a user-defined network (UDN), its namespace is defined in {virt}.
 endif::[]
 
 ifdef::ova[]
@@ -637,19 +637,19 @@ EOF
 where:
 
 `type`::
-Allowed values are `pod` and `multus`.
+Specifies the network type. Allowed values are `pod` and `multus`.
 
 `<source_network_id>`::
 Specifies the OVA network Universal Unique ID (UUID).
 
 `<network_attachment_definition>`::
-Specifies a network attachment definition for each additional {virt} network.
+Specifies a network attachment definition (NAD) for each additional {virt} network.
 
 `<network_attachment_definition_namespace>`::
-Required only when `type` is `multus`. Specifies the namespace of the {virt} network attachment definition.
+Specifies the namespace of the {virt} NAD. Required only when `type` is `multus`.
 
 `namespace`::
-If you are using a user-defined network (UDN), its namespace is defined in {virt}.
+Specifies the namespace. If you are using a user-defined network (UDN), its namespace is defined in {virt}.
 endif::[]
 
 ifdef::ostack[]
@@ -692,19 +692,19 @@ EOF
 where:
 
 `type`::
-Allowed values are `pod` and `multus`.
+Specifies the network type. Allowed values are `pod` and `multus`.
 
 `source`::
-You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {osp} network UUID.
+Specifies the source network. You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {osp} network UUID.
 
 `<network_attachment_definition>`::
-Specifies a network attachment definition for each additional {virt} network.
+Specifies a network attachment definition (NAD) for each additional {virt} network.
 
 `<network_attachment_definition_namespace>`::
-Required only when `type` is `multus`. Specifies the namespace of the {virt} network attachment definition.
+Required only when `type` is `multus`. Specifies the namespace of the {virt} NAD.
 
 `namespace`::
-If you are using a user-defined network (UDN), its namespace is defined in {virt}.
+Specifies the namespace.If you are using a user-defined network (UDN), its namespace is defined in {virt}.
 endif::[]
 
 ifdef::cnv[]
@@ -748,13 +748,13 @@ EOF
 where:
 
 `type`::
-Allowed values are `pod`, `ignored`, and `multus`.
+Specifies the network type. Allowed values are `pod`, `ignored`, and `multus`.
 
 `<network_attachment_definition>`::
-Specifies the network name. When the `type` is `multus`, use the {virt} network attachment definition name.
+Specifies the network name. When the `type` is `multus`, use the {virt} (NAD) name.
 
 `<network_attachment_definition_namespace>`::
-Required only when the `type` is `multus`. Specifies the namespace of the {virt} network attachment definition. 
+Required only when the `type` is `multus`. Specifies the namespace of the {virt} NAD. 
 endif::[]
 
 ifdef::vmware[]
