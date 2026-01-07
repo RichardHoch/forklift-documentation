@@ -789,7 +789,7 @@ EOF
 where:
 
 `<access_mode>`::
-Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+Specifies the access mode. Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 
 `<source_datastore>`::
 Specifies the {vmw} vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
@@ -827,7 +827,7 @@ EOF
 where:
 
 `<access_mode>`::
-Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+Specifies the access mode. Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 
 `<source_storage_domain>`::
 Specifies the {rhv-full} storage domain UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
@@ -865,10 +865,10 @@ EOF
 where:
 
 `<access_mode>`::
-Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+Specifies the access mode. Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 
 `name`::
-For OVA, the `StorageMap` can map only a single storage, which all the disks from the OVA are associated with, to a storage class at the destination. For this reason, the storage is referred to in the UI as "Dummy storage for source provider <provider_name>". In the YAML, write the phrase as it appears above, without the quotation marks and replacing <provider_name> with the actual name of the provider.
+Specifies the source provider. For OVA, the `StorageMap` can map only a single storage, which all the disks from the OVA are associated with, to a storage class at the destination. For this reason, the storage is referred to in the UI as "Dummy storage for source provider <provider_name>". In the YAML, write the phrase as it appears above, without the quotation marks and replacing <provider_name> with the actual name of the provider.
 endif::[]
 
 ifdef::ostack[]
@@ -903,7 +903,7 @@ EOF
 where:
 
 `<access_mode>`::
-Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+Specifies the access mode. Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 
 `<source_volume_type>`::
 Specifies the {osp} `volume_type` UUID. For example, `f2737930-b567-451a-9ceb-2887f6207009`.
@@ -941,7 +941,7 @@ EOF
 where:
 
 `<access_mode>`::
-Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
+Specifies the access mode. Allowed values are `ReadWriteOnce` and `ReadWriteMany`.
 endif::[]
 +
 . Optional: Create a `Hook` manifest to run custom code on a VM during the phase specified in the `Plan` CR:
@@ -965,10 +965,10 @@ EOF
 where:
 
 `<service account>`::
-Optional: {ocp} service account. Use the `serviceAccount` parameter to modify any cluster resources.
+Specifies the {ocp} service account. This is an optional label. Use the `serviceAccount` parameter to modify any cluster resources.
 
 `playbook`::
-Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
+Specifies the Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
 +
 [NOTE]
 ====
@@ -1074,11 +1074,11 @@ Specifies a storage mapping even if the VMs to be migrated are not assigned with
 Specifies the name of the `StorageMap` CR.
 
 `preserveStaticIPs`::
-By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP address linked to the interface name in the guest VM lose their IP address.
+Specifies wheteher to prerserve static IP addresses. By default, virtual network interface controllers (vNICs) change during the migration process. As a result, vNICs that are configured with a static IP address linked to the interface name in the guest VM lose their IP address.
 To avoid this, set `preserveStaticIPs` to `true`. {project-short} issues a warning message about any VMs for which vNIC properties are missing. To retrieve any missing vNIC properties, run those VMs in vSphere in order for the vNIC properties to be reported to {project-short}.
 
 `networkNameTemplate`::
-Optional. Specifies a template for the network interface name for the VMs in your plan.
+Specifies a template for the network interface name for the VMs in your plan. This is an aoptional label.
 The template follows the Go template syntax and has access to the following variables:
 * `.NetworkName:` If the target network is `multus`, add the name of the Multus Network Attachment Definition. Otherwise, leave this variable empty.
 * `.NetworkNamespace`: If the target network is `multus`, add the namespace where the Multus Network Attachment Definition is located.
@@ -1097,7 +1097,7 @@ Variable names cannot exceed 63 characters. VM names geneated by templates must 
 ====
 
 `pvcNameTemplate`::
-Optional. Specifies a template for the persistent volume claim (PVC) name for a plan.
+Specifies a template for the persistent volume claim (PVC) name for a plan. This is an optional label.
 The template follows the Go template syntax and has access to the following variables:
 * `.VmName`: Name of the VM.
 * `.PlanName`: Name of the migration plan.
@@ -1111,37 +1111,37 @@ The template follows the Go template syntax and has access to the following vari
 * `"{{if .Shared}}shared-{{end}}{{.VmName}}-{{.DiskIndex}}"`
 
 `pvcNameTemplateUseGenerateName`::
-Optional:
+Specifies whether to add alphanumeric characters to the name of a PVC.
 * When set to `true`, {project-short} adds one or more randomly generated alphanumeric characters to the name of the PVC in order to ensure all PVCs have unique names.
 * When set to `false`, if you specify a `pvcNameTemplate`, {project-short} does not add such characters to the name of the PVC.
 +
 include::snip_pvcNameTemplateUseGenerateName-warn.adoc[]
 
 `skipGuestConversion`::
-Determines whether VMs are converted before migration using the `virt-v2v` tool, which makes the VMs compatible with {virt}.
+Specifies whether VMs are converted before migration using the `virt-v2v` tool, which makes the VMs compatible with {virt}.
 * When set to `false`, the default value, {project-short} migrates VMs using `virt-v2v`.
 * When set to `true`, {project-short} migrates VMs using raw copy mode, which copies the VMs without converting them first.
 +
 Raw copy mode copies VMs without converting them with `virt-v2v`. This allows for faster conversions, migrating VMs running a wider range of operating systems, as well as supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}. For more information on `virt-v2v`, see xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool].
 
 `targetAffinity`::
-Optional: Specifies a target affinity rule, which may be quite complex, is entered in lines following this label.
+Specifies a target affinity rule, which may be quite complex, is entered in lines following this label. This is an optional label.
 +
 `targetAffinity`, `targetLabels`, and `targetNodeSelector` are labels that support VM target scheduling, a feature that lets you direct {project-short} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when the VMs are powered on. For more information on the feature in general, see xref:target-vm-scheduling-options_mtv[Target VM scheduling options]. For more details on using the feature with the CLI, including an example YAML snippet, see xref:configuring-target-vm-scheduling-cli_mtv[Scheduling target VMs from the command-line interface].
 
 `targetLabels`::
-Optional: Applies organizational or operational labels to migrated VMs for identification and management.
+Specifies organizational or operational labels to migrated VMs for identification and management. This is an optional label.
 
 `targetNodeSelector`::
-Optional: Ensures VMs are scheduled on nodes that are an exact match for key-value pairs you enter.
+Specifies the key-value pairs that must be matched for VMs to be scheduled on nodes. This is an optional label.
 
 `useCompatibilityMode`::
-Determines whether the migration uses VirtIO devices or compatibility devices (SATA bus, E1000E NIC) when `skipGuestConversion` is `true`, that is, when raw copy mode is used for the migration. The setting of `useCompatibilityMode` has no effect when `skipGuestConversion` is `false`, because `virt-v2v` conversion always uses VirtIO devices.
+Specifies whether the migration uses VirtIO devices or compatibility devices (SATA bus, E1000E NIC) when `skipGuestConversion` is `true`, that is, when raw copy mode is used for the migration. The setting of `useCompatibilityMode` has no effect when `skipGuestConversion` is `false`, because `virt-v2v` conversion always uses VirtIO devices.
 * When set to `true`, the default setting, {project-short} uses compatibility devices (SATA bus, E1000E NIC) in the migration process to ensure that the VMs can be booted after migration.
 * When set to `false`, {project-short} uses high-performance VirtIO devices in the migration process, and `virt-v2v` ensures that the VMs can be booted after migration. Before using this option, verify that VirtIO drivers are already installed in the source VMs.
 
 `volumeNameTemplate`::
-Optional: Specifies a template for the volume interface name for the VMs in your plan.
+Specifies a template for the volume interface name for the VMs in your plan. This is an optional label.
 The template follows the Go template syntax and has access to the following variables:
 ** `.PVCName`: Name of the PVC mounted to the VM using this volume.
 ** `.VolumeIndex`: Sequential index of the volume interface (0-based).
@@ -1151,31 +1151,31 @@ The template follows the Go template syntax and has access to the following vari
 ** `"pvc-{{.PVCName}}"`
 
 `vms`::
-Use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
+Specifies the source VMs. Use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
 
 `<source_vm1>`::
 Specifies the {vmw} vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
 
 `networkNameTemplate`::
-Optional: Specifies a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in `spec:networkNameTemplate`.
+Specifies a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in `spec:networkNameTemplate`. This is an optional label.
 
 `pvcNameTemplate`::
-Optional: Specifies a PVC name for the specific VM. Overrides the value set in `spec:pvcNameTemplate`. Variables and examples as in `spec:pvcNameTemplate`.
+Specifies a PVC name for the specific VM. Overrides the value set in `spec:pvcNameTemplate`. Variables and examples as in `spec:pvcNameTemplate`. This is an optional label.
 
 `volumeNameTemplate`::
-Optional: Specifies a volume name for the specific VM. Overrides the value set in `spec:volumeNameTemplate`. Variables and examples as in `spec:volumeNameTemplate`.
+Specifies a volume name for the specific VM. Overrides the value set in `spec:volumeNameTemplate`. Variables and examples as in `spec:volumeNameTemplate`. This is an optional label.
 
 `targetName`::
-Optional: {project-short} automatically generates a name for the target VM. You can override this name by using this parameter and entering a new name. The name you enter must be unique, and it must be a valid Kubernetes subdomain. Otherwise, the migration fails automatically.
+Specifies the name of the target VM. {project-short} automatically generates a name for the target VM. You can override this name by using this parameter and entering a new name. The name you enter must be unique, and it must be a valid Kubernetes subdomain. Otherwise, the migration fails automatically. This is an optional label.
 
 `hooks`::
-Optional: Specifies up to two hooks for a VM. Each hook must run during a separate migration step.
+Specifies up to two hooks for a migration. Each hook must run during a separate migration step. This is an optional label.
 
 `<hook>`::
 Specifies the name of the `Hook` CR.
 
 `<step>`::
-Allowed values are `PreHook` before the migration plan starts or `PostHook` after the migration is complete.
+Specifies the type of hook. Allowed values are `PreHook` before the migration plan starts or `PostHook` after the migration is complete.
 +
 include::snip_vmware-name-change.adoc[]
 
@@ -1246,7 +1246,7 @@ where:
 Specifies the name of the `Plan` CR.
 
 `preserveClusterCpuModel`::
-See note below.
+Specifies whether a custom CPU model is used, as detailed in the note that follows.
 
 `warm`::
 Specifies whether the migration is warm or cold. If you specify a warm migration without specifying a value for the `cutover` parameter in the `Migration` manifest, only the precopy stage will run.
@@ -1267,19 +1267,19 @@ Specifies a storage mapping even if the VMs to be migrated are not assigned with
 Specifies the name of the `StorageMap` CR.
 
 `vms`::
-Use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
+Specifies the source VM. Use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
 
 `<source_vm1>`::
 Specifies the {rhv-full} VM UUID.
 
 `hooks`::
-Optional: Specifies up to two hooks for a VM. Each hook must run during a separate migration step.
+Specifies up to two hooks for a migration. Each hook must run during a separate migration step. This is an optional label.
 
 `<hook>`::
 Specifies the name of the `Hook` CR.
 
 `<step>`::
-Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+Specifies the type of hook. Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 +
 [NOTE]
 ====
@@ -1370,19 +1370,19 @@ Specifies a storage mapping even if the VMs to be migrated are not assigned with
 Specifies the name of the `StorageMap` CR.
 
 `vms`::
-Accepts either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
+Specifies the source VMs and their hooks.Accepts either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
 
 `<source_vm1>`::
 Specifies the OVA VM UUID.
 
 `hooks`::
-Optional: You can specify up to two hooks for a VM. Each hook must run during a separate migration step.
+Specifies up to two hooks for a migration. Each hook must run during a separate migration step. This is an optional label.
 
 `<hook>`::
 Specifies the name of the `Hook` CR.
 
 `<step>`::
-Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+Specifies the type of hook. Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
 
 ifdef::ostack[]
@@ -1463,19 +1463,19 @@ Specifies a storage mapping, even if the VMs to be migrated are not assigned wit
 Specifies the name of the `StorageMap` CR.
 
 `vms`::
-Accepts either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
+Specifies the source VMs. Accepts either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
 
 `<source_vm1>`::
 Specifies the {osp} VM UUID.
 
 `hooks`::
-Optional: Specifies up to two hooks for a VM. Each hook must run during a separate migration step.
+Specifies up to two hooks for a VM. Each hook must run during a separate migration step. This is an optional label.
 
 `<hook>`::
 Specifies the name of the `Hook` CR.
 
 `<step>`::
-Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+Specifies the type of hook. Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
 
 ifdef::cnv[]
@@ -1556,13 +1556,13 @@ Specifies a storage mapping, even if the VMs to be migrated are not assigned wit
 Specifies the name of the `StorageMap` CR.
 
 `hooks`::
-Optional: Specifies up to two hooks for a VM. Each hook must run during a separate migration step.
+Specifies up to two hooks for a VM. Each hook must run during a separate migration step. This is an optional label.
 
 `<hook>`::
 Specifies the name of the `Hook` CR.
 
 `<step>`::
-Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
+Specifies the type of hook. Allowed values are `PreHook`, before the migration plan starts, or `PostHook`, after the migration is complete.
 endif::[]
 
 . Create a `Migration` manifest to run the `Plan` CR:

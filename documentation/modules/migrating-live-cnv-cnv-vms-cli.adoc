@@ -205,14 +205,14 @@ where:
 Specifies the {ocp} service account. This is an optional label. Use the `serviceAccount` parameter to modify any cluster resources.
 
 `playbook`::
-Specifies the Base64-encoded Ansible Playbook. Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
+Specifies the Base64-encoded Ansible Playbook. If you specify a playbook, the `image` must include an `ansible-runner`.
 +
 [NOTE]
 ====
 You can use the default `hook-runner` image or specify a custom image. If you specify a custom image, you do not have to specify a playbook.
 ====
 
-. Create a `Plan` manift the main thing is that you suggested a fix. est for the migration:
+. Create a `Plan` manifest for the migration:
 +
 [source,yaml,subs="attributes+"]
 ----
@@ -271,10 +271,10 @@ Specifies a storage mapping, even if the VMs to be migrated are not assigned wit
 Specifies the name of the `StorageMap` CR.
 
 `type`::
-Specifis the type of migration. Must be set to `live`.
+Specifies the type of migration. Must be set to `live`.
 
 `hooks`::
-Optional: Specifies up to two hooks for a VM. Each hook must run during a separate migration step.
+Specifies up to two hooks for a VM. Each hook must run during a separate migration step. This is an optional label.
 
 `<hook>`::
 Specifies the name of the `Hook` CR.
