@@ -351,12 +351,15 @@ spec:
   pvcNameTemplate: <pvc_name_template>
   pvcNameTemplateUseGenerateName: true
   skipGuestConversion: false
-  targetAffinity: <affinity rule> 
+  targetAffinity: <target_affinity_rule> 
   targetLabels: 
     label: <label> 
   targetNodeSelector: 
     <key>:<value>
   targetNamespace: <target_namespace>
+  convertorLabels: <importer_converter_labels>
+  convertorNodeSelector: <key>:<value>
+  convertorAffinity<importer_affinity_rule>
   useCompatibilityMode: true
   volumeNameTemplate: <volume_name_template>
   vms: 
