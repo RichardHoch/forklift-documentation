@@ -456,7 +456,7 @@ Specifies whether VMs are converted before migration using the `virt-v2v` tool, 
 Raw copy mode copies VMs without converting them with `virt-v2v`. This allows for faster conversions, migrating VMs running a wider range of operating systems, as well as supporting migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}. For more information on `virt-v2v`, see xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool].
 
 `targetAffinity`::
-Specifies a target affinity rule, which may be quite complex, is entered in lines following this label. This is an optional label.
+Specifies a VM target affinity rule, which may be quite complex, that is entered in the lines following this label. This is an optional label.
 +
 `targetAffinity`, `targetLabels`, and `targetNodeSelector` are labels that support VM target scheduling, a feature that lets you direct {project-short} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when the VMs are powered on. For more information on the feature in general, see xref:target-vm-scheduling-options_mtv[Target VM scheduling options]. For more details on using the feature with the CLI, including an example YAML snippet, see xref:configuring-target-vm-scheduling-cli_mtv[Scheduling target VMs from the command-line interface].
 
@@ -465,6 +465,18 @@ Specifies organizational or operational labels to migrated VMs for identificatio
 
 `targetNodeSelector`::
 Specifies the key-value pairs that must be matched for VMs to be scheduled on nodes. This is an optional label.
+
+`convertorLabels`::
+Specifies organizational or operational labels for importer pods for identification and management. This is an optional label.
+
+`convertorNodeSelector`::
+Specifies the key-value pairs that must be matched for data to be transferred by the importer pods to the specified target nodes. This is an optional label.
+
+`convertorAffinity`::
+Specifies an importer pod affinity rule, which may be quite complex, that is entered in the lines following this label. This is an optional label.
++
+`convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` are labels that support importer pod scheduling, a feature that lets you direct {project-short} to migrate virtual machines (VMs) using specific importer pods. 
+// For more information on the feature in general, see xref:target-vm-scheduling-options_mtv[Target VM scheduling options]. For more details on using the feature with the CLI, including an example YAML snippet, see xref:configuring-target-vm-scheduling-cli_mtv[Scheduling target VMs from the command-line interface]. GET INFO FROM Kobi's PR.
 
 `useCompatibilityMode`::
 Determines whether the migration uses VirtIO devices or compatibility devices when `skipGuestConversion` is `true` (raw copy mode). This setting has no effect when `skipGuestConversion` is `false` because standard V2V conversion always uses VirtIO devices.
