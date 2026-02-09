@@ -476,7 +476,7 @@ To ensure proper system functionality, system-managed labels, for example, `migr
 +
 For more details on labels and selectors in Kuberbetes, see https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#labels[Labels and Selectors].
 +
-`convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` are labels that support importer pod scheduling, a feature that lets you direct {project-short} to migrate {vmw} VMs using specific `virt-v2v` convertor pods (importer pods). The feature is for cold migrations only.
+`convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` are fields that support scheduling the `virt-v2v` conversion pod (importer pod) for cold migrations from {vmw} providers. This feature lets you set the `convertorLabels`, `convertorNodeSelector`, and `convertorAffinity` that control the labels, `noteSelector` and `Affinity` of the convertor pod.
 +
 For more information on importer files, see {mtv-plan}assembly_planning-migration-vmware#con_about-configuring-importer-pods_vmware[About scheduling importer pods].
 
