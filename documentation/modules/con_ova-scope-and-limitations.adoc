@@ -1,0 +1,8 @@
+// Module included in the following assemblies:
+//
+// * documentation/doc-Migrating_your_virtual_machines/assemblies/assembly_migrating-from-ova.adoc
+
+:_mod-docs-content-type: CONCEPT
+
+= Scope and limitations of OVA migrations
+
