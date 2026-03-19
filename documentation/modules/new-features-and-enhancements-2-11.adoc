@@ -9,9 +9,9 @@
 [role="_abstract"]
 {project-first} 2.11 introduces the following features and enhancements.
 
-Controlling nested virtualization in {vmw} migrations::
+Controlling nested virtualization in migrations::
 
-{vmw} only: In {project-short} 2.11.1, you can control nested virtualization behavior during migration with the new `enableNestedVirtualization` option. This option accepts three values:
+In {project-short} 2.11.1, you can control nested virtualization behavior during migration with the new `enableNestedVirtualization` option. This option accepts three values:
 
 ** Not set (default): Nested virtualization is automatically detected from the source VM and preserved on the target.
 ** `true`: Force enables nested virtualization on the target VM, regardless of source settings.
