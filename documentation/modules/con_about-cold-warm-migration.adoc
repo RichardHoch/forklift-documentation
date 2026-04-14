@@ -12,7 +12,7 @@ Choose cold migration for VMs that are shut down and warm migration for running 
 
 [NOTE]
 ====
-OVA migration is validated for migrating supported guest operating systems exported from {vmw} vSphere. For third-party networking or security appliances, check with the vendor for native QCOW2 or KVM images.
+OVA migration is validated for migrating supported guest operating systems exported from {vmw} vSphere. For third-party networking or security appliances, check with the vendor for native QCOW2 or Kernel-based Virtual Machine (KVM) images.
 ====
 
 [id="cold-migration_{context}"]
@@ -24,7 +24,7 @@ Cold migration converts each VM to be compatible with {ocp-short} before transfe
 
 [NOTE]
 ====
-VMware only: In cold migrations, in situations in which a package manager cannot be used during the migration, {project-short} does not install the `qemu-guest-agent` daemon on the migrated VMs. This has some impact on the functionality of the migrated VMs, but overall, they are still expected to function.
+VMware only: In cold migrations, in situations in which a package manager cannot be used during the migration, {project-short} does not install the `qemu-guest-agent` daemon on the migrated VMs. This has some impact on the functionality of the migrated VMs, however, basic VM operations remain supported.
 
 To enable {project-short} to automatically install `qemu-guest-agent` on the migrated VMs, ensure that your package manager can install the daemon during the first boot of the VM after migration.
 
