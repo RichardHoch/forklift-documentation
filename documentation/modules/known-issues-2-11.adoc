@@ -19,7 +19,7 @@ link:https://issues.redhat.com/browse/MTV-4719[MTV-4719]
 
 Live migration support limit in custom namespaces with host providers:: 
 
-Host providers in custom namespaces operate with restricted permissions that prevent {project-short} from accessing resources for live migration support, for example, verifying a feature gate is enabled or synchronizing certificates between namespaces. As a result, live migration currently has limited supported in custom namespaces with host providers. 
+Host providers in custom namespaces operate with restricted permissions that prevent {project-short} from accessing resources for live migration support, for example, verifying a feature gate is enabled or synchronizing certificates between namespaces. As a result, live migration currently has limited support in custom namespaces with host providers. 
 +
 *Workaround:* Use the default host provider or create a provider with an appropriate access token. 
 +
@@ -27,7 +27,7 @@ link:https://issues.redhat.com/browse/MTV-3347[MTV-3347]
 
 Forklift console plugin fails to load on IPv6-only {ocp-short} clusters::
 
-When {project-short} 2.9.1 is deployed on an IPv6-only {ocp-short} cluster, an incorrect API endpoint prevents the forklift-console-plugin from serving a valid plugin manifest, displaying the error `Failed to get a valid plugin manifest from /api/plugins/forklift-console-plugins/`. While the forklift-ui-plugin pod runs successfully, the console plugin cannot load, preventing access to the {project-short} user interface in the {ocp-short} web console. This issue affects all IPv6-only cluster deployments with {ocp-short} 4.19.7 and CNV 4.19.1.
+When {project-short} is deployed on an IPv6-only {ocp-short} cluster, an incorrect API endpoint prevents the forklift-console-plugin from serving a valid plugin manifest, displaying the error `Failed to get a valid plugin manifest from /api/plugins/forklift-console-plugins/`. While the forklift-ui-plugin pod runs successfully, the console plugin cannot load, preventing access to the {project-short} user interface in the {ocp-short} web console. This issue affects all IPv6-only cluster deployments with {ocp-short} 4.19.7 and CNV 4.19.1. This issue was first observed in {project-short} version 2.9.1 and continues to affect {project-short} version 2.11. 
 +
 *Workaround:* Deploy {project-short} on dual-stack or IPv4 clusters until this issue is resolved.
 +
@@ -69,6 +69,8 @@ VDDK image only in `openshift-mtv` namespace::
 
 When you upload a {vmw} Virtual Disk Development Kit (VDDK) init image, the image URL is located in the `openshift-mtv` namespace. If you create a provider in a different namespace, there is an error when pulling the image.
 +
+*Workaround:* Currently, there is no workaround for this issue.
++
 link:https://issues.redhat.com/browse/MTV-3673[MTV-3673]
 
 Fibre Channel (FC) protocol VM migration fails to identify existing FC host objects in Infinibox::
@@ -78,6 +80,4 @@ Fibre Channel (FC) protocol VM migration fails to identify existing FC host obje
 *Workaround:* Currently, there is no workaround for this issue.
 +
 link:https://issues.redhat.com/browse/MTV-4338[MTV-4338]
-
-//For a complete list of all known issues in this release, see the list of link:https://issues.redhat.com/issues/?filter=12472621[Known Issues] in Jira.
 
