@@ -137,8 +137,6 @@ link:https://issues.redhat.com/browse/MTV-3659[MTV-3659]
 
 Changes in device identification during OVA to {ocp-short} migration::
 
-Before this update, the migration of VMs with DHCP settings from an OVA provider to an {ocp-short} cluster resulted in the loss of interface settings in the VM YAML file, causing only one default interface with a pod network to remain in the VM. As a consequence, users experienced VMs with incorrect interface settings after migration. The issue occurred because the OVA scanner identified NICs and other device types based on the display name, which was unreliable. With this update, device identification is based on the resource type provided in the OVF specification, preserving interface settings during migration and preventing incorrect configurations.
+Before this update, the migration of VMs with DHCP settings from an OVA provider to an {ocp-short} cluster resulted in the loss of interface settings in the VM YAML file. This caused only one default interface with a pod network to remain in the VM. As a consequence, users experienced VMs with incorrect interface settings after migration. The issue occurred because the OVA scanner identified NICs and other device types based on the display name, which was unreliable. With this update, device identification is based on the resource type provided in the OVF specification, preserving interface settings during migration and preventing incorrect configurations.
 +
 link:https://issues.redhat.com/browse/MTV-3654[MTV-3654]
-
-

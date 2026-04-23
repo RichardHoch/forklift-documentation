@@ -78,6 +78,6 @@ The following storage providers support storage copy offload:
 * Dell PowerStore
 * HPE 3PAR
 * HPE Primera
-* Infinidat Infinibox
+* Infinidat InfiniBox
 * IBM Flashsystem
 
