@@ -39,7 +39,21 @@ where:
 `id` or `name`::
 Specifies a VM by using the `id` key or the `name` key.
 +
-The value of the `id` key is the _managed object reference_, for a {vmw} VM, or the _VM UUID_, for a {rhv-full} VM.
+ifdef::vmware[]
+The value of the `id` key is the _managed object reference_ for a {vmw} VM.
+endif::[]
+ifdef::rhv[]
+The value of the `id` key is the _VM UUID_ for a {rhv-full} VM.
+endif::[]
+ifdef::ostack[]
+The value of the `id` key is the _VM UUID_ for an {osp} VM.
+endif::[]
+ifdef::ova[]
+The value of the `id` key is the _VM name_ from the OVA file for an OVA VM.
+endif::[]
+ifdef::cnv[]
+The value of the `id` key is the _VM name_ for a {virt} VM.
+endif::[]
 
 . Retrieve the `Migration` custom resource (CR) to monitor the progress of the remaining VMs, following this example:
 +

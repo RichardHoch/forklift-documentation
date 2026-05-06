@@ -19,22 +19,17 @@ In {project-short} version 2.9 and earlier, {project-short} used the `pod` netwo
 
 In version 2.10.0 and later, {project-short} detects if you have selected a user-defined network (UDN) as your default network. Therefore, if you set the UDN to be the migration's namespace, you do not need to select a new default network when you create your migration plan.
 
-[IMPORTANT]
-====
-{project-short} supports using UDNs for all providers except {virt}.
-====
+Considerations::
 
-[NOTE]
-====
-You can override the default migration network of the provider by selecting a different network when you create a migration plan.
-====
+* {project-short} supports using UDNs for all providers except {virt}.
+* You can override the default migration network of the provider by selecting a different network when you create a migration plan.
 
 .Procedure
 
 . In the {ocp} web console, click *Migration for Virtualization* > *Providers*.
 . Click the {virt} provider whose migration network you want to change.
 +
-When the *Providers detail* page opens:
+When the *Provider details* page opens:
 
 . Click the *Networks* tab.
 . Click *Set default transfer network*.
