@@ -9,8 +9,14 @@
 [role="_abstract"]
 {project-first} 2.11 has the following known issues.
 
-VMware migrations fail when the disk count exceeds the ESXi host LUN ID limit::
+Migrations fail for VMs sharing the same BIOS UUID due to a Libvirt limitation:: 
+While {project-short} correctly handles source virtual machines (VMs), a known issue in Libvirt (RHEL-174300) causes conflicts on the target environment if multiple VMs share the same BIOS UUID. As a consequence, the migration fails.
++
+*Workaround:* Ensure that all VMs have unique BIOS UUIDs before you initiate the migration.
++
+link:https://redhat.atlassian.net/browse/MTV-5326[MTV-5326] and link:https://redhat.atlassian.net/browse/RHEL-174300[RHEL-174300]
 
+VMware migrations fail when the disk count exceeds the ESXi host LUN ID limit::
 VMware migrations with many disks fail if the disk count exceeds the host limit for discoverable SCSI LUN IDs.
 +
 *Workaround:* Increase the `Disk.MaxLUN` value on each ESXi host to support discovery of a higher number of LUN IDs during migrations.
