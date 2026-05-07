@@ -30,7 +30,7 @@ Before this update, {project-short} could not distinguish between multiple VMs s
 link:https://redhat.atlassian.net/browse/MTV-5091[MTV-5091]
 
 MTV allocates sufficient disk space during RHEL 3, 4, and 5 migrations::
-Before this update, {project-short} did not allocate enough disk space when pre-creating output disks during migrations from Red Hat Enterprise Linux (RHEL) 3, 4, or 5. As a consequence, the migrations failed with an error indicating that the destination size was smaller than the source size. With this update, the estimated disk size was increased. As a result, {project-short} allocates the correct disk space and the migrations succeed.
+Before this update, {project-short} did not allocate enough disk space when pre-creating output disks during migrations from Red Hat Enterprise Linux (RHEL) 3, 4, or 5. As a consequence, the migrations failed with an error indicating that the destination size was smaller than the source size. With this update, the estimated disk size was increased. As a result, {project-short} allocates the correct disk space, and the migrations succeed.
 +
 link:https://redhat.atlassian.net/browse/MTV-4872[MTV-4872]
 
