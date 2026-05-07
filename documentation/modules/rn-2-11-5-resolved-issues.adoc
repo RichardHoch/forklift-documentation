@@ -25,7 +25,7 @@ Before this update, the {project-short} user interface (UI) displayed Hyper-V as
 link:https://redhat.atlassian.net/browse/MTV-5174[MTV-5174]
 
 MTV powers off the correct VM during migration when multiple VMs share a BIOS UUID::
-Before this update, {project-short} could not distinguish between multiple VMs sharing the same BIOS UUID. As a consequence, {project-short} incorrectly powered off the first matching VM during migration, leading to potential data loss and downtime. With this release, the migration process was modified to use `moRef` instead of BIOS UUID. AAs a result, {project-short} correctly identifies and powers off the correct VM during migration. While {project-short} correctly handles the power-off phase, environments with duplicate BIOS UUIDs might still experience migration failures due to a known issue in Libvirt. For more information, see the "Known issues" section.
+Before this update, {project-short} could not distinguish between multiple VMs sharing the same BIOS UUID. As a consequence, {project-short} incorrectly powered off the first matching VM during migration, leading to potential data loss and downtime. With this release, the migration process was modified to use `moRef` instead of BIOS UUID. As a result, {project-short} correctly identifies and powers off the correct VM during migration. While {project-short} correctly handles the power-off phase, environments with duplicate BIOS UUIDs might still experience migration failures due to a known issue in Libvirt. For more information, see the "Known issues" section.
 +
 link:https://redhat.atlassian.net/browse/MTV-5091[MTV-5091]
 
