@@ -19,3 +19,8 @@ Storage copy offload for Infinidat Infinibox is Developer Preview software only.
 
 For more information about the support scope of Red{nbsp}Hat Developer Preview software, see link:https://access.redhat.com/support/offerings/devpreview/[Developer Preview Support Scope].
 ====
+
+Storage copy offload supports VIB version 0.3.0::
+The vSphere Installation on Bundle (VIB) is updated to version 0.3.0. If you set up storage copy offload by using a VIB, manually install VIB version 0.3.0 or configure your system automation to install it.
++
+link:https://redhat.atlassian.net/browse/MTV-5321[MTV-5321]

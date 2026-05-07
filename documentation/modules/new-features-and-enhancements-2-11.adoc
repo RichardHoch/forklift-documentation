@@ -9,6 +9,16 @@
 [role="_abstract"]
 {project-first} 2.11 introduces the following features and enhancements.
 
+MTV preserves static IPs on migrated Windows VMs when the DHCP Client service is disabled (Developer Preview):: 
+{project-short} provides the capability to configure static IP addresses on a source Windows virtual machine (VM) even if the DHCP Client service is disabled. This enhancement allows the network configuration script to set static IPs during a migration without relying on the DHCP service. As a result, {project-short} preserves static IPs on migrated Windows VMs if you enable the `feature_windows_registry_network_config` feature flag. This capability is available as Developer Preview software.
++
+[IMPORTANT]
+====
+The `feature_windows_registry_network_config` feature flag is Developer Preview software only. Developer Preview software is not supported by Red{nbsp}Hat in any way and is not functionally complete or production-ready. Do not use Developer Preview software for production or business-critical workloads. This feature provides early access to upcoming product software in advance of its possible inclusion in a Red{nbsp}Hat product offering. For more information about the support scope of Red{nbsp}Hat Developer Preview software, see link:https://access.redhat.com/support/offerings/devpreview/[Developer Preview Support Scope].
+====
++
+link:https://redhat.atlassian.net/browse/MTV-4717[MTV-4717]
+
 You can configure a custom `ServiceAccount` object for all MTV pods::
 
 You can configure a custom `ServiceAccount` object for all {project-short} pods, including CDI pods. This enhancement supports migrating workloads that are run under specific service accounts with well-defined RBAC roles. As a result, feature {project-short} can access storage backends, pull secrets, or perform API calls that require a dedicated `ServiceAccount` object with specific permissions.
