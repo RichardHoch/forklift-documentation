@@ -41,13 +41,13 @@ endif::[]
 +
 Your ForkliftController appears in the list that is displayed.
 . Click *Workloads* -> *Pods* to verify that the {project-short} pods are running.
-. Click *Operators* -> *Installed Operators* to verify that *{operator-name-ui}* appears in the *{namespace}* project with the status *Succeeded*.
+. Click *Operators* -> *Installed Operators* to verify that *{operator-name-ui}* appears in the +{namespace}+ project with the status *Succeeded*.
 +
 When the plugin is ready you will be prompted to reload the page.  The  *Migration* menu item is automatically added to the navigation bar, displayed on the left of the {ocp} web console.
 endif::[]
 ifdef::cli[]
 
-. Create the {namespace} project:
+. Create the +{namespace}+ project:
 +
 [source,terminal,subs="attributes+"]
 ----
