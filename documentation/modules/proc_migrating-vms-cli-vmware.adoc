@@ -14,7 +14,7 @@ Considerations::
 
 * Anti-virus software can cause migrations to fail. It is strongly recommended to remove such software from source VMs before you start a migration.
 * {project-short} does not support migrating VMware Non-Volatile Memory Express (NVMe) disks.
-* To migrate virtual machines (VMs) that have shared disks, see xref:mtv-shared-disks_{context}[Migrating virtual machines with shared disks].
+* To migrate virtual machines (VMs) that have shared disks, see xref:proc_mtv-shared-disks_{context}[Migrating virtual machines with shared disks].
 * {project-first} cannot migrate {vmw} vSphere 6 and {vmw} vSphere 7 VMs to a FIPS-compliant {virt} cluster.
 
 .Prerequisites
@@ -140,7 +140,7 @@ Specifies the namespace for the resource. Use +{namespace}+ for the {project-sho
 Specifies the name of the {vmw} vSphere `Provider` CR.
 
 `<source_host_mor>`::
-Specifies the Managed Object Reference (moRef) of the {vmw} vSphere host. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
+Specifies the Managed Object Reference (moRef) of the {vmw} vSphere host. To retrieve the moRef, see xref:proc_retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
 
 `<source_network_ip>`::
 Specifies the IP address of the {vmw} vSphere migration network.
@@ -189,7 +189,7 @@ Specifies the namespace for the resource. Use +{namespace}+ for the {project-sho
 Specifies the network type. Allowed values are `pod`, `multus`, and `ignored`. Use `ignored` to avoid attaching VMs to this network for this migration.
 
 `source`::
-Specifies the source network. You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {vmw} vSphere network Managed Object Reference (moRef). To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
+Specifies the source network. You can use either the `id` or the `name` parameter to specify the source network. For `id`, specify the {vmw} vSphere network Managed Object Reference (moRef). To retrieve the moRef, see xref:proc_retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
 
 `<network_attachment_definition>`::
 Specifies a network attachment definition (NAD) for each additional {virt} network.
@@ -248,10 +248,10 @@ Specifies the `Secret` that contains the storage provider credentials.
 `<storage_vendor_product>`::
 Specifies the name of the storage product used in the migration. For example, `vantara` for Hitachi Vantara. Storage copy offload only. Valid strings are listed in the table that follows this CR.
 +
-Storage copy offload is a feature that allows you to migrate {vmw} virtual machines (VMs) that are in a storage array network (SAN) more efficiently. This feature makes use of the command `vmkfstools` on the ESXi host, which invokes the `XCOPY` command on the storage array using an Internet Small Computer Systems Interface (iSCSI) or Fibre Channel (FC) connection. Storage copy offload lets you copy data inside a SAN more efficiently than copying the data over a network. For {project-first} 2.11, storage copy offload is available as GA for cold migration and as a Technology Preview feature for warm migration. For more information, see link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.11/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_planning-migration-vmware_mtv#about-storage-copy-offload_vmware[Migrating {vmw} virtual machines by using storage copy offload].
+Storage copy offload is a feature that allows you to migrate {vmw} virtual machines (VMs) that are in a storage array network (SAN) more efficiently. This feature makes use of the command `vmkfstools` on the ESXi host, which invokes the `XCOPY` command on the storage array using an Internet Small Computer Systems Interface (iSCSI) or Fibre Channel (FC) connection. Storage copy offload lets you copy data inside a SAN more efficiently than copying the data over a network. For {project-first} 2.11, storage copy offload is available as GA for cold migration and as a Technology Preview feature for warm migration. For more information, see link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.11/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_planning-migration-vmware_mtv#con_about-storage-copy-offload_vmware[Migrating {vmw} virtual machines by using storage copy offload].
 
 `<source_datastore>`::
-Specifies the {vmw} vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
+Specifies the {vmw} vSphere datastore moRef. For example, `f2737930-b567-451a-9ceb-2887f6207009`. To retrieve the moRef, see xref:proc_retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
 +
 [cols="1,1",options="header"]
 .Storage copy offload only: Supported storage vendors and their identifying strings in the CLI
@@ -450,12 +450,12 @@ Specifies whether VMs are converted before migration using the `virt-v2v` tool, 
 * When set to `false`, the default value, {project-short} migrates VMs using `virt-v2v`.
 * When set to `true`, {project-short} migrates VMs using raw copy mode, which copies the VMs without converting them first.
 +
-Raw copy mode copies VMs without converting them with `virt-v2v`. This provides faster conversions for migrating VMs running a wider range of operating systems and supports migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}. For more information on `virt-v2v`, see xref:virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool].
+Raw copy mode copies VMs without converting them with `virt-v2v`. This provides faster conversions for migrating VMs running a wider range of operating systems and supports migrating disks encrypted using Linux Unified Key Setup (LUKS) without needing keys. However, VMs migrated using raw copy mode might not function properly on {virt}. For more information on `virt-v2v`, see xref:con_virt-v2v-mtv_mtv[How {project-short} uses the virt-v2v tool].
 
 `targetAffinity`::
 Specifies a VM target affinity rule that is entered in the lines following this label. This is an optional label.
 +
-`targetAffinity`, `targetLabels`, and `targetNodeSelector` are labels that support VM target scheduling, a feature that lets you direct {project-short} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when the VMs are powered on. For more information on the feature in general, see xref:target-vm-scheduling-options_mtv[Target VM scheduling options]. For more details on using the feature with the CLI, including an example YAML snippet, see xref:configuring-target-vm-scheduling-cli_mtv[Scheduling target VMs from the command-line interface].
+`targetAffinity`, `targetLabels`, and `targetNodeSelector` are labels that support VM target scheduling, a feature that lets you direct {project-short} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when the VMs are powered on. For more information on the feature in general, see xref:con_target-vm-scheduling-options_mtv[Target VM scheduling options]. For more details on using the feature with the CLI, including an example YAML snippet, see xref:proc_configuring-target-vm-scheduling-cli_mtv[Scheduling target VMs from the command-line interface].
 
 `targetLabels`::
 Specifies organizational or operational labels to migrated VMs for identification and management. This is an optional label.
@@ -500,7 +500,7 @@ For a list of available variables and examples, see xref:ref_volume-name-templat
 Specifies the source VMs. Use either the `id` or the `name` parameter to specify the source VMs. If you are using a UDN, verify that the IP address of the provider is outside the subnet of the UDN. If the IP address is within the subnet of the UDN, the migration fails.
 
 `<source_vm1>`::
-Specifies the {vmw} vSphere VM moRef. To retrieve the moRef, see xref:retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
+Specifies the {vmw} vSphere VM moRef. To retrieve the moRef, see xref:proc_retrieving-vmware-moref_vmware[Retrieving a {vmw} vSphere moRef].
 
 `networkNameTemplate`::
 Specifies a network interface name for the specific VM. Overrides the value set in `spec:networkNameTemplate`. Variables and examples as in `spec:networkNameTemplate`. This is an optional label.

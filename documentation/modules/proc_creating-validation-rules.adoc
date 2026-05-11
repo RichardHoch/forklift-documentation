@@ -37,7 +37,7 @@ For example, in a validation rule that checks if a VMware VM has NUMA node affin
 count(input.numaNodeAffinity) != 0
 ----
 +
-For information about Rego files, see xref:about-rego-files_{context}[About Rego files].
+For information about Rego files, see xref:con_about-rego-files_{context}[About Rego files].
 
 .Procedure
 
@@ -148,5 +148,5 @@ EOF
 
 .Next step
 
-Update the inventory rules version after creating a custom rule so that the `Provider Inventory` service detects the changes and validates the VMs. For more information, see xref:updating-inventory-rules-version_{context}[Updating the inventory rules version].
+Update the inventory rules version after creating a custom rule so that the `Provider Inventory` service detects the changes and validates the VMs. For more information, see xref:proc_updating-inventory-rules-version_{context}[Updating the inventory rules version].
 

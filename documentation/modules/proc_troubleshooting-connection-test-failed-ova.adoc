@@ -39,4 +39,4 @@ $ {oc} logs -n {namespace} deployment/forklift-controller
 [role="_additional-resources"]
 .Additional resources
 
-* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#ova-prerequisites_mtv[OVA prerequisites]
+* link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#ref_ova-prerequisites_mtv[OVA prerequisites]

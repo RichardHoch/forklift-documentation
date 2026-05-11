@@ -11,7 +11,7 @@ You can use the storage copy offload feature of {project-first} to migrate {vmw}
 
 .Prerequisites
 
-In addition to the regular link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_provider-specific-requirements-for-migration_mtv#vmware-prerequisites_mtv[{vmw} prerequisites], storage copy offload has the following additional prerequisites:
+In addition to the regular link:https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/2.10/html/planning_your_migration_to_red_hat_openshift_virtualization/assembly_provider-specific-requirements-for-migration_mtv#ref_vmware-prerequisites_mtv[{vmw} prerequisites], storage copy offload has the following additional prerequisites:
 
 * One of the following storage systems, configured:
 ** Hitachi Vantara

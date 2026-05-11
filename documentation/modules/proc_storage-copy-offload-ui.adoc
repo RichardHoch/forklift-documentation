@@ -11,7 +11,7 @@ You can use the storage copy offload feature of {project-first} to migrate {vmw}
 
 .Prerequisites
 
-In addition to the regular link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#vmware-prerequisites_mtv[{vmw} prerequisites], storage copy offload has the following additional prerequisites:
+In addition to the regular link:{mtv-plan}assembly_provider-specific-requirements-for-migration_mtv#ref_vmware-prerequisites_mtv[{vmw} prerequisites], storage copy offload has the following additional prerequisites:
 
 * One of the following storage systems, configured:
 ** Hitachi Vantara
@@ -341,6 +341,6 @@ For HPE 3PAR, must also include Web Services API (WSAPI) port. Use the HPE 3PAR 
 +
 . In the UI complete the following steps:
 
-.. Create an ownerless storage map by using the procedure in link:{mig-plan}assembly_planning-migration-vmware_mtv#creating-form-based-storage-maps-ui-vmware_vmware[Creating ownerless storage maps using the form page of the {project-short} UI]. Use the *Offload plugin* named `vSphere XCOPY`.
+.. Create an ownerless storage map by using the procedure in link:{mig-plan}assembly_planning-migration-vmware_mtv#proc_creating-form-based-storage-maps-ui-vmware_vmware[Creating ownerless storage maps using the form page of the {project-short} UI]. Use the *Offload plugin* named `vSphere XCOPY`.
 
 .. Create a migration plan by using the procedure in link:{mtv-plan}assembly_planning-migration-vmware_mtv#proc_creating-plan-wizard-vmware_vmware[Creating a VMware vSphere migration plan by using the MTV wizard].
