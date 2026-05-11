@@ -77,7 +77,7 @@ link:https://issues.redhat.com/browse/MTV-3869[MTV-3869]
 
 Improved Migration plan page visibility for target projects::
 
-Before this update, the `Migration plan` page in the {project-short} UI displayed the `openshift-mtv` project by default, but the target project was not displayed by default. With this update, the default view of the `Migration plan` page now includes the `Target project` column, enhancing visibility and navigation for migration plans.
+Before this update, the `Migration plan` page in the {project-short} UI displayed the +{namespace}+ project by default, but the target project was not displayed by default. With this update, the default view of the `Migration plan` page now includes the `Target project` column, enhancing visibility and navigation for migration plans.
 +
 link:https://issues.redhat.com/browse/MTV-3864[MTV-3864]
 

@@ -15,9 +15,9 @@ You can create a validation rule based on any attribute in the `"input"` key, fo
 
 . Retrieve the routes for the project:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
-oc get route -n openshift-mtv
+{oc} get route -n {namespace}
 ----
 
 . Retrieve the `Inventory` service route:
@@ -29,9 +29,9 @@ $ {oc} get route <inventory_service> -n {namespace}
 
 . Retrieve the access token:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
-$ TOKEN=$(oc whoami -t)
+$ TOKEN=$({oc} whoami -t)
 ----
 
 . Trigger an HTTP GET request (for example, using Curl):

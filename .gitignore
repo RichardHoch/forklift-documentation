@@ -5,3 +5,4 @@ documentation/*/build/*
 _site
 .DS_Store
 */master.html
+.claude/

@@ -71,9 +71,9 @@ When migrating two VMs with shared RDM disks using copyoffload in separate migra
 +
 link:https://issues.redhat.com/browse/MTV-4549[MTV-4549]
 
-VDDK image only in `openshift-mtv` namespace::
+VDDK image only in +{namespace}+ namespace::
 
-When you upload a {vmw} Virtual Disk Development Kit (VDDK) init image, the image URL is located in the `openshift-mtv` namespace. If you create a provider in a different namespace, there is an error when pulling the image.
+When you upload a {vmw} Virtual Disk Development Kit (VDDK) init image, the image URL is located in the +{namespace}+ namespace. If you create a provider in a different namespace, there is an error when pulling the image.
 +
 link:https://issues.redhat.com/browse/MTV-3673[MTV-3673]
 

@@ -25,13 +25,13 @@ apiVersion: forklift.konveyor.io/v1beta1
 kind: Provider
 metadata:
   name: my-vsphere-provider
-  namespace: openshift-mtv
+  namespace: {namespace}
 spec:
   type: vsphere
   url: https://vcenter.example.com
   secret:
     name: vsphere-credentials
-    namespace: openshift-mtv
+    namespace: {namespace}
   settings:
     esxiCloneMethod: "ssh"
 ----

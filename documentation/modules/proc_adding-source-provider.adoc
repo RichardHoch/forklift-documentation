@@ -101,7 +101,7 @@ ifdef::vmware[]
 ... Click *Create Provider*.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 
@@ -113,7 +113,7 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{vmw}* when the *Welcome* pane opens.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 
@@ -172,7 +172,7 @@ ifdef::rhv[]
 ... Click *Create Provider*.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 +
@@ -184,7 +184,7 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{rhv-full}* when the *Welcome* pane opens.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 
@@ -219,7 +219,7 @@ ifdef::ova[]
 ... Click *Create Provider*.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 ... Click *Open Virtual Appliance*.
@@ -230,7 +230,7 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *Open Virtual Appliance* when the *Welcome* pane opens.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 
@@ -251,7 +251,7 @@ ifdef::ostack[]
 ... Click *Create Provider*.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 ... Click *{osp}*.
@@ -262,7 +262,7 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{osp}* when the *Welcome* pane opens.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 
@@ -324,7 +324,7 @@ ifdef::cnv[]
 ... Click *Create Provider*.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 ... Click *{virt}*.
@@ -335,7 +335,7 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{virt}* when the *Welcome* pane opens.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 . Specify the following fields:
@@ -371,7 +371,7 @@ ifdef::dest_vmware,dest_rhv,dest_ostack,dest_ova,dest_cnv[]
 ... Click *Create Provider*.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 ... Click *{virt}*.
@@ -382,7 +382,7 @@ If you have Administrator privileges, you can see all projects, otherwise, you c
 If the *Welcome* pane is not visible, click *Show the welcome card* in the upper-right corner of the page, and click *{virt}* when the *Welcome* pane opens.
 ... Select a *Project* from the list. The default project shown depends on the active project of {project-short}.
 +
-If the active project is *All projects*, then the default project is `openshift-mtv`. Otherwise, the default project is the same as the active project.
+If the active project is *All projects*, then the default project is +{namespace}+. Otherwise, the default project is the same as the active project.
 +
 If you have Administrator privileges, you can see all projects, otherwise, you can see only the projects you are authorized to work with.
 

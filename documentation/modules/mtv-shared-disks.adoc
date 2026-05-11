@@ -100,20 +100,20 @@ This migration "succeeds", but it results in a problem: Shared disk 2 is migrate
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Plan
  name: transfer-shared-disks
- namespace: openshift-mtv
+ namespace: {namespace}
 spec:
  map:
    network:
      apiVersion: forklift.konveyor.io/v1beta1
      kind: NetworkMap
      name: vsphere-7gxbs
-     namespace: openshift-mtv
+     namespace: {namespace}
      uid: a3c83db3-1cf7-446a-b996-84c618946362
    storage:
      apiVersion: forklift.konveyor.io/v1beta1
      kind: StorageMap
      name: vsphere-mqp7b
-     namespace: openshift-mtv
+     namespace: {namespace}
      uid: 20b43d4f-ded4-4798-b836-7c0330d552a0
  migrateSharedDisks: true
  provider:
@@ -121,15 +121,15 @@ spec:
      apiVersion: forklift.konveyor.io/v1beta1
      kind: Provider
      name: host
-     namespace: openshift-mtv
+     namespace: {namespace}
      uid: abf4509f-1d5f-4ff6-b1f2-18206136922a
    source:
      apiVersion: forklift.konveyor.io/v1beta1
      kind: Provider
      name: vsphere
-     namespace: openshift-mtv
+     namespace: {namespace}
      uid: be4dc7ab-fedd-460a-acae-a850f6b9543f
- targetNamespace: openshift-mtv
+ targetNamespace: {namespace}
  vms:
    - id: vm-69
      name: vm-1-with-shared-disks
@@ -146,20 +146,20 @@ spec:
 apiVersion: forklift.konveyor.io/v1beta1
 kind: Plan
  name: skip-shared-disks
- namespace: openshift-mtv
+ namespace: {namespace}
 spec:
  map:
    network:
      apiVersion: forklift.konveyor.io/v1beta1
      kind: NetworkMap
      name: vsphere-7gxbs
-     namespace: openshift-mtv
+     namespace: {namespace}
      uid: a3c83db3-1cf7-446a-b996-84c618946362
    storage:
      apiVersion: forklift.konveyor.io/v1beta1
      kind: StorageMap
      name: vsphere-mqp7b
-     namespace: openshift-mtv
+     namespace: {namespace}
      uid: 20b43d4f-ded4-4798-b836-7c0330d552a0
  migrateSharedDisks: false
  provider:
@@ -167,15 +167,15 @@ spec:
      apiVersion: forklift.konveyor.io/v1beta1
      kind: Provider
      name: host
-     namespace: openshift-mtv
+     namespace: {namespace}
      uid: abf4509f-1d5f-4ff6-b1f2-18206136922a
    source:
      apiVersion: forklift.konveyor.io/v1beta1
      kind: Provider
      name: vsphere
-     namespace: openshift-mtv
+     namespace: {namespace}
      uid: be4dc7ab-fedd-460a-acae-a850f6b9543f
- targetNamespace: openshift-mtv
+ targetNamespace: {namespace}
  vms:
    - id: vm-71
      name: vm-2-with-shared-disks

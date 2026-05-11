@@ -15,9 +15,9 @@ You can retrieve the moRef of one or more vSphere entities from the Inventory se
 
 . Retrieve the routes for the project:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
-oc get route -n openshift-mtv
+{oc} get route -n {namespace}
 ----
 
 . Retrieve the `Inventory` service route:

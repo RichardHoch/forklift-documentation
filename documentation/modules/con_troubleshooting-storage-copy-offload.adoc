@@ -55,9 +55,9 @@ Manual SSH key connection errors::
 +
 ... Edit the provider Secret:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
-$ oc edit secret <provider_secret_name> -n openshift-mtv
+$ {oc} edit secret <provider_secret_name> -n {namespace}
 ----
 +
 ... Add or update the `SSH_TIMEOUT_SECONDS` field with a higher value (for example, `300` for 5 minutes).

@@ -47,12 +47,12 @@ Snapshots created by a warm migration do not affect storage copy offload migrati
 
 . In the {project-short} Operator, set the value of `feature_copy_offload` to `true` in `forklift-controller` by running the following command:
 +
-[source,terminal,subs="+quotes"]
+[source,terminal,subs="attributes+,+quotes"]
 ----
-oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type merge -p '{"spec": {"feature_copy_offload": "true"}}' -n openshift-mtv
+{oc} patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type merge -p '{"spec": {"feature_copy_offload": "true"}}' -n {namespace}
 ----
 +
-. Create a `Secret` in the namespace in which the migration provider is set up, usually `openshift-mtv`. Include the credentials from the appropriate vendor in your `Secret`.
+. Create a `Secret` in the namespace in which the migration provider is set up, usually +{namespace}+. Include the credentials from the appropriate vendor in your `Secret`.
 +
 [width="100%",cols="22%,48%,15%,15%",options="header",]
 .Credentials for a Hitachi Vantara storage copy offload Secret
@@ -349,30 +349,30 @@ apiVersion: forklift.konveyor.io/v1beta1
 kind: StorageMap
 metadata:
   name: copy-offload
-  namespace: openshift-mtv
+  namespace: {namespace}
 spec:
   map:
   - destination:
       accessMode: ReadWriteMany
       storageClass: <storage_class>
-    offloadPlugin: 
+    offloadPlugin:
       vsphereXcopyConfig:
         secretRef: <Secret_for_the_storage_vendor_product>
         storageVendorProduct: <storage_vendor_product>
     source:
-      id: <datastore_ID> 
+      id: <datastore_ID>
   provider:
     destination:
       apiVersion: forklift.konveyor.io/v1beta1
       kind: Provider
       name: host
-      namespace: openshift-mtv
+      namespace: {namespace}
       uid: <ID_of_provider_host>
     source:
       apiVersion: forklift.konveyor.io/v1beta1
       kind: Provider
       name: <name_of_vSphere_provider>
-      namespace: openshift-mtv
+      namespace: {namespace}
       uid: <ID_of_vSphere_provider>
 ----
 +

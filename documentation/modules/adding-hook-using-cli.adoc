@@ -16,7 +16,7 @@ You can run one pre-migration hook, one post-migration hook, or one of each per 
 * Migration plan.
 * Migration hook image or the playbook containing the hook image.
 * File containing the Secret for the source provider.
-* (Optional) {ocp} service account called by the hook. The service account must have at least write access for the `openshift-mtv` namespace where hooks execute. For information about creating a service account, see link:https://docs.openshift.com/container-platform/{ocp-version}/authentication/understanding-and-creating-service-accounts.html[Understanding and creating service accounts].
+* (Optional) {ocp} service account called by the hook. The service account must have at least write access for the +{namespace}+ namespace where hooks execute. For information about creating a service account, see link:https://docs.openshift.com/container-platform/{ocp-version}/authentication/understanding-and-creating-service-accounts.html[Understanding and creating service accounts].
 * SSH access for VMs you want to migrate with the public key installed on the VMs.
 * VMs running on Microsoft Server only: Remote Execution enabled.
 
@@ -26,7 +26,7 @@ You can run one pre-migration hook, one post-migration hook, or one of each per 
 .. Install the public key on the VM.
 .. Encode the private key in the Secret to base64.
 +
-[source,yaml]
+[source,yaml,subs="attributes+"]
 ----
 apiVersion: v1
 data:
@@ -34,7 +34,7 @@ data:
 kind: Secret
 metadata:
   name: ssh-credentials
-  namespace: openshift-mtv
+  namespace: {namespace}
 type: Opaque
 ----
 . Encode your playbook by concatenating a file and piping it for Base64 encoding, for example:
@@ -78,9 +78,9 @@ Specifies the Base64-encoded Ansible Playbook to use. For example, `LS0tCi0gbm..
 [NOTE]
 ====
 To decode an attached playbook, retrieve the resource with custom output and pipe it to base64. For example:
-[source,shell]
+[source,shell,subs="attributes+"]
 ----
-$ oc get -n konveyor-forklift hook playbook -o \
+$ {oc} get -n {namespace} hook playbook -o \
     go-template='{{ .spec.playbook }}' | base64 -d
 ----
 ====
@@ -117,7 +117,7 @@ The following example hook ensures that the VM can be accessed using SSH, create
       api_version: v1
       kind: Secret
       name: privkey
-      namespace: openshift-mtv
+      namespace: {namespace}
     register: ssh_credentials
 
   - name: Ensure SSH directory exists

@@ -27,7 +27,7 @@ Virtual machine (VM) migrations do not work without VDDK when a VM is backed by 
 
 . Upload the VDDK image to the cluster:
 +
-.. Verify that the image is uploaded to the `openshift-mtv` namespace or the provider's namespace.
+.. Verify that the image is uploaded to the +{namespace}+ namespace or the provider's namespace.
 .. Note the image URL for the next step.
 
 . Update the provider configuration to reference the VDDK image:

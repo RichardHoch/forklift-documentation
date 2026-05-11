@@ -23,9 +23,9 @@ The error messages are misleading and do not accurately reflect the in-progress 
 
 . If the issue persists, check the forklift controller logs for more detailed error information:
 +
-[source,terminal]
+[source,terminal,subs="attributes+"]
 ----
-$ oc logs -n openshift-mtv deployment/forklift-controller
+$ {oc} logs -n {namespace} deployment/forklift-controller
 ----
 
 . Correct any configuration issues identified and update the provider.

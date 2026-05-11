@@ -59,7 +59,7 @@ must-gather
     │       │   └── current.log
     │       └── mig-plan-vm-8325-4zw49
     │           └── current.log
-    └── openshift-mtv
+    └── {namespace}
         ├── crs
         │   └── plan
         │       └── mig-plan-cold.yaml

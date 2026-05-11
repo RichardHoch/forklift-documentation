@@ -47,12 +47,12 @@ Snapshots created by a warm migration do not affect storage copy offload migrati
 
 . In the {project-short} Operator, set the value of `feature_copy_offload` to `true` in `forklift-controller` by running the following command:
 +
-[source,terminal,subs="+quotes"]
+[source,terminal,subs="attributes+,+quotes"]
 ----
-$ oc patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type merge -p '{"spec": {"feature_copy_offload": "true"}}' -n openshift-mtv
+$ {oc} patch forkliftcontrollers.forklift.konveyor.io forklift-controller --type merge -p '{"spec": {"feature_copy_offload": "true"}}' -n {namespace}
 ----
 
-. Create a `Secret` in the namespace in which the migration provider is set up, usually `openshift-mtv`. Include the credentials from the appropriate vendor in your `Secret`.
+. Create a `Secret` in the namespace in which the migration provider is set up, usually +{namespace}+. Include the credentials from the appropriate vendor in your `Secret`.
 +
 [width="100%",cols="22%,48%,15%,15%",options="header",]
 .Credentials for a Hitachi storage copy offload Secret
