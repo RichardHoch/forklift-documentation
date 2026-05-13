@@ -21,7 +21,7 @@ In addition to the regular link:{mtv-plan}assembly_provider-specific-requirement
 ** Dell PowerFlex
 ** Dell PowerStore
 ** HPE 3PAR or HPE Primera
-** Infinidat Infinibox
+** Infinidat InfiniBox
 ** IBM Flashsystem
 * A working Container Storage Interface (CSI) driver connected to the above and to {virt}
 * A configured {vmw} vSphere provider
@@ -288,7 +288,7 @@ For HPE 3PAR, must also include Web Services API (WSAPI) port. Use the HPE 3PAR 
 |===
 +
 [width="100%",cols="22%,48%,15%,15%",options="header",]
-.Credentials for an Infinidat InfiBox storage copy offload Secret
+.Credentials for an Infinidat InfiniBox storage copy offload Secret
 |===
 |Key| Description| Mandatory?| Default
 
