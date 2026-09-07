@@ -108,13 +108,18 @@ Only disable *Use compatibility mode* if VirtIO drivers are already installed in
 ====
 *** Click *Save*.
 
-.. *VM target node selector*, *VM target labels*, and *VM target affinity rules* are options that support VM target scheduling, a feature that lets you direct {project-short} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when to power on the VMs.
+.. *VM target labels*, *VM target node selector*, and *VM target affinity rules* are options that support VM target scheduling, a feature that lets you direct {project-short} to migrate virtual machines (VMs) to specific nodes or workloads (pods) of {virt} as well as to schedule when to power on the VMs.
 +
 For more information on the feature in general, see link:../doc-Migrating_your_virtual_machines/master.html#con_target-vm-scheduling-options_mtv[Target VM scheduling options].
-+
-For more details on using the feature with the UI, see link:../doc-Migrating_your_virtual_machines/master.html#con_configuring-target-vm-scheduling-ui_mtv[Scheduling target VMs from the user interface].
 
-* *VM target node selector* allows you to create mandatory exact match key-value label pairs that the target node must possess. If no node on the cluster has all the labels specified, the VM is not scheduled and it remains in a `Pending` state until there is space on a node that fits these key-value label pairs.
+* With VM target labels, you can allow you to apply organizational or operational labels to migrated VMs for identification and management. One use for these labels is to use them to specify a different scheduler for your migrated VMs, by creating a specific target VM label for it.
+
+** To specify VM target node labels for your migration plan, do the following:
+*** Click the *Edit* icon.
+*** Enter one or more `key=value` pairs. For example: `project=myProject`.
+*** Click *Save*.
+
+* With VM target node selector, you can create mandatory exact match key-value label pairs that the target node must possess. If no node on the cluster has all the labels specified, the VM is not scheduled and it remains in a `Pending` state until there is space on a node that fits these key-value label pairs.
 
 ** To use the VM target node selector for your migration plan, do the following:
 *** Click the *Edit* icon.
@@ -122,14 +127,7 @@ For more details on using the feature with the UI, see link:../doc-Migrating_you
 *** To add another key-value label pair, click *+* and enter another key-value pair.
 *** Click *Save*.
 
-* *VM target labels* allows you to apply organizational or operational labels to migrated VMs for identification and management. One use for these labels is to use them to specify a different scheduler for your migrated VMs, by creating a specific target VM label for it.
-
-** To use the VM target node selector for your migration plan, do the following:
-*** Click the *Edit* icon.
-*** Enter one or more VM target labels.
-*** Click *Save*.
-
-* *VM target affinity rules*: Target affinity rules let you use conditions to either require or prefer scheduling on specific nodes or workloads (pods).
+* With VM target affinity rules, you can use conditions to either require or prefer scheduling on specific nodes or workloads (pods).
 +
 Target anti-affinity rules let you prevent VMs from being scheduled to run on selected workloads (pods) or prefer that they are not scheduled. These kind of rules offer more flexible placement control than rigid Node Selector rules, because they support conditionals such as `In`, or `NotIn`.
 +
@@ -143,16 +141,61 @@ Additionally, both target affinity and target anti-affinity rules allow you to i
 *** Click the *Edit* icon.
 *** Click *Add affinity rule*.
 *** Select the *Type* of affinity rule from the list. Valid options: Node Affinity, Workload (pod) Affinity, Workload (pod) Anti-Affinity.
-*** Select the *Condition* from the list. Valid options: Preferred during scheduling (soft condition), Required during scheduling (hard condition).
-*** Soft condition only: Enter a numerical *Weight*. The higher the weight, the stronger the preference. Valid options: whole numbers from 1-100.
-*** Enter a *Typology key*, the key for the node label that the system uses to denote the domain.
+*** Select the *Condition* from the list. Valid options: Preferred during scheduling (soft condition), Required during scheduling (hard condition). Rules with a preferred condition will stack with an `AND` relation between them. Rules with a required condition will stack with an `OR` relation between them.
+*** Soft condition only: Enter a numerical *Weight*. The higher the weight, the stronger the preference. Valid options: whole numbers from 1 to 100.
+*** Enter a *Topology key*, the key for the node label that the system uses to denote the domain.
 *** Optional: Select the *Workload labels* that you want to set by doing the following:
 **** Enter a *Key*.
 **** Select an *Operator* from the list. Valid options: `Exists`, `DoesNotExist`, `In`, and `NotIn`.
 **** Enter a *Value*.
 *** To add another label, click *Add expression* and add another key-value pair with an operator.
 *** Click *Save affinity rule*.
-*** To add another affinity rule, click *Add affinity rule*. Rules with a preferred condition will stack with an `AND` relation between them. Rules with a required condition will stack with an `OR` relation between them.
+*** To add another affinity rule, click *Add affinity rule*.
+
+.. *Convertor pod labels*, *Convertor pod node selector*, and *Convertor pod affinity rules* are options that support Convertor pod scheduling. , 
+With Convertor pod scheduling, you can direct {project-short} to run temporary `virt-v2v` Convertor pods on specific nodes in your {virt} cluster. This ensures that conversion tasks run on nodes with the required storage access, network proximity, or organizational labels. 
++
+For more information on importer files, see {mtv-plan}assembly_planning-migration-vmware#con_about-configuring-importer-pods_vmware[About scheduling importer pods].
+ 
+* With Convertor pod labels, you can specify custom labels to apply to `virt-v2v` convertor pods during migration. This can help with organizational labeling, monitoring, or targeting convertor pods with network policies.
+
+** To use the Convertor pod labels for your migration plan, do the following:
+*** Click the *Edit* icon.
+*** Enter one or more `key=value` pairs. For example: `project=myProject`.
+*** Click *Save*.
+
+* With Convertor pod node selector, you can create mandatory exact match key-value label pairs for `virt-v2v` convertor pods to constrain their scheduling to specific nodes. This ensures convertor pods run on nodes with required capabilities such as network proximity to source infrastructure or specific storage access. 
+
+** To use the Convertor pod node selector for your migration plan, do the following:
+*** Click the *Edit* icon.
+*** Enter a key-value label pair. For example, `beta.kubernetes.io/os=linux`.
+*** To add another key-value label pair, click *+* and enter another key-value pair.
+*** Click *Save*.
+
+* With Convertor pod affinity rules, you can use conditions to require or prefer scheduling Convertor pods on specific nodes or workloads (pods).
++
+With Convertor pod anti-affinity rules, you can prevent Convertor pods from running on selected workloads (pods) or specify a preference against running on them. These kind of rules offer more flexible placement control than rigid node selector rules, because they support operators such as `In`, or `NotIn`.
++
+For example, you can require that a \`virt-v2v\` Convertor pod run on node A or on a node with SSD storage, but not on a node labeled `license-tier=silver`.
++
+Additionally, both Convertor pod affinity and anti-affinity rules support _hard_ (required) and _soft_ (preferred) conditions in the same rule. A hard condition is a mandatory requirement, whereas a soft condition expresses a preference. For example, a rule can require that a Convertor pod run on node A or on SSD storage, while preferring that it not run on a node labeled `license-tier=silver`.`
++
+{project-short} supports Convertor pod rules at both the node level and the workload (pod) level. It supports Convertor pod anti-affinity rules at the workload (pod) level only.
+
+** To use Convertor pod affinity rules for your migration plan, do the following:
+*** Click the *Edit* icon.
+*** Click *Add affinity rule*.
+*** Select the *Type* of affinity rule from the list. Valid options: Node Affinity, Workload (pod) Affinity, Workload (pod) Anti-Affinity.
+*** Select the *Condition* from the list. Valid options: Preferred during scheduling (soft condition), Required during scheduling (hard condition). Rules with a preferred condition stack with an `AND` relation between them. Rules with a required condition stack with an `OR` relation between them.
+*** Soft condition only: Enter a numerical *Weight*. The higher the weight, the stronger the preference. Valid options: whole numbers from 1 to 100.
+*** Enter a *Topology key*, the key for the node label that the system uses to denote the domain.
+*** Optional: Select the *Workload labels* that you want to set by doing the following:
+**** Enter a *Key*.
+**** Select an *Operator* from the list. Valid options: `Exists`, `DoesNotExist`, `In`, and `NotIn`.
+**** Enter a *Value*.
+*** To add another label, click *Add expression* and add another key-value pair with an operator.
+*** Click *Save affinity rule*.
+*** To add another affinity rule, click *Add affinity rule*.
 +
 {project-short} validates any changes you made on this page.
 
