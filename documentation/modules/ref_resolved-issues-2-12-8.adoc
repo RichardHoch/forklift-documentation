@@ -9,11 +9,6 @@
 [role="_abstract"]
 Review the fixed issues in this release of {project-short}.
 
-Network interface cards are preserved during Hyper-V cluster migrations::
-Previously, the Hyper-V provider only queried the connected host for network switches. It also resolved network universally unique identifiers (UUIDs) by name alone. As a consequence, {project-short} silently dropped the network interface cards (NICs) of virtual machines (VMs) on remote cluster nodes. This occurred when their network switches were missing from the inventory. Additionally, identically named switches on different nodes could be assigned the wrong UUID. With this update, {project-short} collects network switches from all cluster nodes and resolves UUIDs by both node and switch name. As a result, {project-short} correctly maps and preserves all NICs during migration.
-+
-link:https://issues.redhat.com/browse/MTV-6444[MTV-6444]
-
 Target VM name resolution is standardized across all adapters::
 Previously, the plan builder and validator resolved target virtual machine (VM) names using different field-priority orders. As a consequence, they computed different persistent volume claim (PVC) names, causing migration plan validation to fail. With this update, {project-short} standardizes the target VM name resolution order across all adapters. As a result, all adapters resolve names consistently, which prevents mismatched PVC names during migration plan validation.
 +
